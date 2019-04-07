@@ -6,7 +6,7 @@ public class toDoList {
 
 	int numberOfItems;
 	toDoItem head;
-
+	toDoItem sorted;
 
 	//toDoItem tail;
 	public toDoList()
@@ -14,6 +14,7 @@ public class toDoList {
 		int numberOfItems=0;
 		//this.next=null;
 		head=null;
+		sorted=null;
 	
 	}
 	public void deleteItem(String jobDesc)
@@ -48,10 +49,9 @@ public class toDoList {
 				{
 					conflictingPriority=true;
 				}
-				else
-				{
+				
 					n=n.next;
-				}
+				
 				
 			}
 			if(n.getjobDesc()==jobDesc)
@@ -68,6 +68,7 @@ public class toDoList {
 				n.next=nextItem;
 				n.next.next=null;
 				this.numberOfItems+=1;
+				
 			}
 			
 			
@@ -75,9 +76,37 @@ public class toDoList {
 		
 		
 	}
-	public void sortList()
+	public void insertionSort(toDoItem head)
 	{
+		toDoItem sorted=null;
+		toDoItem current=head;
 		
+		while(current!=null)
+		{
+			toDoItem next = current.next;
+			sort(current);
+			current=next;
+		}
+		head=sorted;
+	}
+	public void sort(toDoItem newItem)
+	{
+		if(sorted==null||sorted.priority>=newItem.priority)
+		{
+			newItem.next=sorted;
+			sorted=newItem;
+		}
+		else
+		{
+			toDoItem current=sorted;
+			while(current.next!=null && current.next.priority<=newItem.priority)
+			{
+				current=current.next;
+			}
+			newItem.next=current.next;
+			current.next=newItem;
+			
+		}
 	}
 	public void changeItem(int priority, String jobDesc, String dueDate, String desc)
 	{
@@ -85,21 +114,27 @@ public class toDoList {
 	}
 	public void printList()
 	{
-		while(head.next!=null)
+		toDoItem sorted=this.head;
+		while(sorted.next!=null)
 		{
-			System.out.println(head.printInfo());
-			head=head.next;
+			System.out.println(sorted.printInfo());
+			sorted=sorted.next;
 		}
-		System.out.println(head.printInfo());
+		System.out.println(sorted.printInfo());
 	}
 	public static void main (String [] args)
 	{
 		toDoList list=new toDoList();
 		list.addItem(0, "job", "some date", "some desc");
-		list.addItem(0, "job", "some date", "some desc");
+		list.addItem(3, "job7", "some date", "some desc");
 		list.addItem(1, "job2", "some date", "some desc");
+		list.addItem(2, "job3", "some date", "some desc");
 		list.addItem(3, "job3", "some date", "some desc");
-		list.addItem(3, "job3", "some date", "some desc");
+		list.addItem(-1, "job5", "some date", "some desc");
+		list.printList();
+		toDoItem sorted=list.head;
+		list.insertionSort(sorted);
+		System.out.println("after insertion sort");
 		list.printList();
 	}
 }

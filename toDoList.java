@@ -20,11 +20,13 @@ public class toDoList {
 	{
 		
 	}
-	public String addItem(int priority, String jobDesc, String dueDate, String desc)
+	public void addItem(int priority, String jobDesc, String dueDate, String desc)
 	{
 		toDoItem nextItem=new toDoItem(priority, jobDesc,dueDate,desc);
-		String alreadyInList="This item is already in your list! Unable to add the Item";
-		String conflictingPriority="This item has a conflicting priority! Unable to add the Item";
+		boolean alreadyInList=false;
+		boolean conflictingPriority=false;
+		//String alreadyInList="This item is already in your list! Unable to add the Item";
+		//String conflictingPriority="This item has a conflicting priority! Unable to add the Item";
 		
 		//nextItem=this.head.next;
 		if(head==null)
@@ -39,12 +41,12 @@ public class toDoList {
 			{
 				if(n.getjobDesc()==jobDesc)
 				{
-					return alreadyInList;
+					alreadyInList=true;
 	
 				}
 				if(n.getPriority()==priority)
 				{
-					return conflictingPriority;
+					conflictingPriority=true;
 				}
 				else
 				{
@@ -54,19 +56,24 @@ public class toDoList {
 			}
 			if(n.getjobDesc()==jobDesc)
 			{
-				return alreadyInList;
+				alreadyInList=true;
 
 			}
 			if(n.getPriority()==priority)
 			{
-				return conflictingPriority;
+				conflictingPriority=true;
 			}
-			n.next=nextItem;
-			n.next.next=null;
+			if(!alreadyInList && !conflictingPriority)
+			{
+				n.next=nextItem;
+				n.next.next=null;
+				this.numberOfItems+=1;
+			}
+			
 			
 		}
-		this.numberOfItems+=1;
-		return "Successfully added Item!";
+		
+		
 	}
 	public void sortList()
 	{

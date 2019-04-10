@@ -1,3 +1,4 @@
+package group_project;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,7 +8,9 @@ import java.util.*;
 public class April extends JFrame implements ActionListener {
  //Message popup = new Message();
     public April() {
+    	
 Message popup = new Message();
+/*
         setTitle("April");
         setSize(500, 500);
 
@@ -83,6 +86,7 @@ Message popup = new Message();
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        */
     }
 
       @Override

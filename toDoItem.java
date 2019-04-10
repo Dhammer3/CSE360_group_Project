@@ -1,4 +1,4 @@
-package cse360assign4;
+package group_project;
 
 public class toDoItem {
 
@@ -77,7 +77,7 @@ public class toDoItem {
 		info+="Priority: "+this.getPriority()+"\n";
 		info+="Job Description: "+this.getjobDesc()+"\n";
 		info+="Due Date: "+this.getDueDate()+"\n";
-		info+="nStatus: "+this.getStatus()+"\n";
+		info+="Status: "+this.getStatus()+"\n";
 		return info;
 	}
 }

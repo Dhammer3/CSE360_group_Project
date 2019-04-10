@@ -1,86 +1,230 @@
-/*import javax.swing.JOptionPane;
-
-public class Message
-{
-
-    public static void infoBox(String infoMessage, String titleBar)
-    {
-        JOptionPane.showMessageDialog(null, infoMessage, " " + titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
-}*/
-
-
-
+package group_project;
 
 
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+
+
+
 public class Message extends JFrame {
+	//int jButtonYset=220;
+	int xDescriptionSpacing=10;
+	int xTextFieldSpacing=140;
+	
+	int ySpacing=10;
+	int yButtonSpacing=200;
+	int xDescriptionSize=130;
+	int yDescriptionSize=100;
+	
+	String taskName="";
+	String dueDate="";
+	String description="";
+	int priority=100;//need to do error handling for this
+	//String
+	//int jButtonY
 	Message(){
-		JFrame f=new JFrame("April 1st");
-					//submit button
-		JButton b=new JButton("Update");
-		b.setBounds(100,190,140, 40);
+		toDoList List= new toDoList();
+		JFrame f=new JFrame("To Do List");
 
-					//enter name label
 		JLabel label = new JLabel();
-		label.setText("Event Name :");
-		label.setBounds(10, 10, 100, 100);
-					//empty label which will show event after button clicked
-		JLabel label1 = new JLabel();
-		label1.setBounds(10, 140, 200, 100);
-					//textfield to enter name
-		JTextField textfield= new JTextField();
-		textfield.setBounds(140, 50, 130, 30);
-					//add to frame
+		label.setText("Task Name :");
+		label.setBounds(xDescriptionSpacing, ySpacing, 100, 100);
+		
+		yInputIterate();	
+		JTextField toDoItemName= new JTextField();
+		toDoItemName.setBounds(xTextFieldSpacing, ySpacing, 130, 30);
+		//toDoItemName.setText("here");
+		
+		JTextField todoLists=new JTextField();
+		todoLists.setBounds(400, 10, 400, 400);
+		
 
-//////////////////////////////////////////////////////////////////
+		
+		//drop down for date
 		JLabel labelx = new JLabel();
 		labelx.setText("Due Date :");
-		labelx.setBounds(10, 50, 100, 100);
+		labelx.setBounds(xDescriptionSpacing, ySpacing, 100, 100);
 		f.add(labelx);
-		JTextField textfieldx= new JTextField();
-		textfieldx.setBounds(140, 90, 130, 30);
-		f.add(textfieldx);
-////////////////////
-		JLabel labely = new JLabel();
-		labely.setText("Description :");
-		labely.setBounds(10, 90, 100, 100);
-		f.add(labely);
-		JTextField textfieldy= new JTextField();
-		textfieldy.setBounds(140, 130, 130, 30);
-		f.add(textfieldy);
+	
+		yInputIterate();
+		JTextField dueDateTextField= new JTextField();
+		dueDateTextField.setBounds(xTextFieldSpacing, ySpacing, 130, 30);
+		//dueDateTextField.setText("Here");
+	
+		f.add(dueDateTextField);
 
+		JLabel desc = new JLabel();
+		desc.setText("Description :");
+		desc.setBounds(xDescriptionSpacing, ySpacing, 100, 100);
+		f.add(desc);
+		
+		yInputIterate();
+		JTextField descriptionTextBox= new JTextField();
+		descriptionTextBox.setBounds(xTextFieldSpacing, ySpacing, 130, 30);
+		f.add(descriptionTextBox);
+		
+		JLabel priority = new JLabel();
+		priority.setText("Priority :");
+		priority.setBounds(xDescriptionSpacing, ySpacing, 100, 100);
+		f.add(priority);
+		
+		yInputIterate();
+		JTextField priorityTextBox= new JTextField();
+		priorityTextBox.setBounds(xTextFieldSpacing, ySpacing, 130, 30);
+		f.add(priorityTextBox);
+		
+		
+		JLabel feedBackMessage = new JLabel();
+		feedBackMessage.setBounds(xDescriptionSpacing, ySpacing, 200, 100);
+		
+		
+		yInputIterate();
+		yInputIterate();
+		JButton update=new JButton("Update");
+		update.setBounds(xDescriptionSpacing,ySpacing,140, 40);
+		
+		yInputIterate();
+		JButton delete=new JButton("Delete");
+		delete.setBounds(xDescriptionSpacing,ySpacing,140, 40);
+		
+		yInputIterate();
+		JButton change=new JButton("Change");
+		change.setBounds(xDescriptionSpacing,ySpacing,140, 40);
+		
+		yInputIterate();
+		JButton save=new JButton("Save");
+		save.setBounds(xDescriptionSpacing,ySpacing,140, 40);
 
-///////////////////////////////////////////////////////////////////
+		yInputIterate();
+		JButton load=new JButton("Load");
+		load.setBounds(xDescriptionSpacing,ySpacing,140, 40);
+		
+		yInputIterate();
+		JButton print=new JButton("Print");
+		print.setBounds(xDescriptionSpacing,ySpacing,140, 40);
 
-
-		f.add(label1);
-		f.add(textfield);
+		
+	
+		f.add(feedBackMessage);
+		f.add(toDoItemName);
 		f.add(label);
-		f.add(b);
-		f.setSize(300,300);
+		f.add(update);
+		f.add(delete);
+		f.add(change);
+		f.add(save);
+		f.add(load);
+		f.add(print);
+		f.add(todoLists);
+		
+		f.setSize(900,600);
 		f.setLayout(null);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 							//action listener
-		b.addActionListener(new ActionListener() {
+		update.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent a) {
-					label1.setText("**Updated**");
+			public void actionPerformed(ActionEvent updateButton) 
+			{
+				boolean updated=false;
+				taskName=toDoItemName.getText();
+				dueDate=dueDateTextField.getText();
+				description=descriptionTextBox.getText();
+				if(updated)
+				{
+					
+				}
+				feedBackMessage.setText("**Updated**");
 			}
+	
 	      });
-		}
+		delete.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent deleteButton) 
+			{
+					boolean deleted=false;
+					if(deleted)
+					{
+						
+					}
+					feedBackMessage.setText("**Deleted**");
+			}
+	
+	      });
+		change.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent changeButton) 
+			{
+					boolean changed=false;
+					if(changed)
+					{
+						
+					}
+					feedBackMessage.setText("**Changed**");
+			}
+	
+	      });
+		save.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent saveButton) 
+			{
+					boolean saved=false;
+					if(saved)
+					{
+						
+					}
+					feedBackMessage.setText("**Saved**");
+			}
+	
+	      });
+		load.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent loadButton) 
+			{
+				boolean loaded=false;
+				if(loaded)
+				{
+					
+				}
+				feedBackMessage.setText("**Loaded**");
+			}
+	
+	      });
+		print.addActionListener(new ActionListener() 
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent printButton) 
+			{
+				
+				todoLists.setText("hello");
+			}
+	
+	     });
+		
+		}
+	
+		
+		public void yInputIterate()
+		{
+			this.ySpacing+=40;
+		}
+		
 
 		public static void main(String[] args) {
 		    new Message();

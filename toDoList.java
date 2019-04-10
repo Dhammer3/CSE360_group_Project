@@ -1,6 +1,6 @@
-package cse360assign4;
+package group_project;
 
-import org.w3c.dom.Node;
+
 
 public class toDoList {
 
@@ -19,17 +19,21 @@ public class toDoList {
 	}
 	public void deleteItem(String jobDesc)
 	{
-		
+		toDoItem n=head;
+		int counter=0;
+		while(n.next!=null)
+		{
+			
+			n=n.next;
+			counter++;
+		}
 	}
-	public void addItem(int priority, String jobDesc, String dueDate, String desc)
+	public boolean addItem(int priority, String jobDesc, String dueDate, String desc)
 	{
-		toDoItem nextItem=new toDoItem(priority, jobDesc,dueDate,desc);
+		toDoItem nextItem=new toDoItem (priority, jobDesc, dueDate, desc);
 		boolean alreadyInList=false;
 		boolean conflictingPriority=false;
-		//String alreadyInList="This item is already in your list! Unable to add the Item";
-		//String conflictingPriority="This item has a conflicting priority! Unable to add the Item";
-		
-		//nextItem=this.head.next;
+
 		if(head==null)
 		{
 			head=nextItem;
@@ -49,15 +53,11 @@ public class toDoList {
 				{
 					conflictingPriority=true;
 				}
-				
-					n=n.next;
-				
-				
+					n=n.next;	
 			}
 			if(n.getjobDesc()==jobDesc)
 			{
 				alreadyInList=true;
-
 			}
 			if(n.getPriority()==priority)
 			{
@@ -68,12 +68,13 @@ public class toDoList {
 				n.next=nextItem;
 				n.next.next=null;
 				this.numberOfItems+=1;
-				
+				return true;
 			}
 			
+				
 			
 		}
-		
+		return false;
 		
 	}
 	public void insertionSort(toDoItem head)
@@ -108,11 +109,12 @@ public class toDoList {
 			
 		}
 	}
-	public void changeItem(int priority, String jobDesc, String dueDate, String desc)
+	public void changeItem(toDoItem newItem, String changeParam)
 	{
 		
 	}
 	public void printList()
+
 	{
 		toDoItem sorted=this.head;
 		while(sorted.next!=null)
@@ -122,19 +124,9 @@ public class toDoList {
 		}
 		System.out.println(sorted.printInfo());
 	}
-	public static void main (String [] args)
+	public void saveList()
 	{
-		toDoList list=new toDoList();
-		list.addItem(0, "job", "some date", "some desc");
-		list.addItem(3, "job7", "some date", "some desc");
-		list.addItem(1, "job2", "some date", "some desc");
-		list.addItem(2, "job3", "some date", "some desc");
-		list.addItem(3, "job3", "some date", "some desc");
-		list.addItem(-1, "job5", "some date", "some desc");
-		list.printList();
-		toDoItem sorted=list.head;
-		list.insertionSort(sorted);
-		System.out.println("after insertion sort");
-		list.printList();
+		
 	}
+	
 }

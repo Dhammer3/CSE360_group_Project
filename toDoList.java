@@ -68,6 +68,7 @@ public class toDoList {
 				n.next=nextItem;
 				n.next.next=null;
 				this.numberOfItems+=1;
+				this.sort(this.head);
 				return true;
 			}
 			
@@ -114,7 +115,6 @@ public class toDoList {
 		
 	}
 	public void printList()
-
 	{
 		toDoItem sorted=this.head;
 		while(sorted.next!=null)
@@ -127,6 +127,17 @@ public class toDoList {
 	public void saveList()
 	{
 		
+	}
+	public static void main (String [] args)
+	{
+		toDoList l= new toDoList();
+		l.addItem(1, "a", "b", "c" );
+		l.printList();
+		l.addItem(2, "g", "h", "k" );
+		l.addItem(3, "e", "h", "j" );
+		l.addItem(-11, "m", "bn", "c" );
+	
+		l.printList();
 	}
 	
 }

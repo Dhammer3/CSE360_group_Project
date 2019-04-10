@@ -5,7 +5,7 @@ public class toDoItem {
 	int priority;
 	String jobDesc;
 	String dueDate;
-	String desc;
+	String tN;
 	String status;
 	String[] statusList= {"not started", "in progress","finished"};
 	toDoItem next;
@@ -15,17 +15,17 @@ public class toDoItem {
 		this.priority=0;
 		this.jobDesc=null;
 		this.dueDate=null;
-		this.desc=null;
+		this.tN=null;
 		this.status=null;
 		this.next=null;
 		this.prev=null;
 	}
-	public toDoItem(int priority, String jobDesc, String dueDate, String desc)
+	public toDoItem(int priority, String jobDesc, String dueDate, String tN)
 	{
 		this.priority=priority;
 		this.jobDesc=jobDesc;
 		this.dueDate=dueDate;
-		this.desc=desc;
+		this.tN=tN;
 		this.status=this.statusList[0];
 		this.next=null;
 		this.prev=null;
@@ -68,7 +68,7 @@ public class toDoItem {
 	}
 	public String getDesc()
 	{
-		return this.desc;
+		return this.tN;
 	}
 
 	public String printInfo()
@@ -77,6 +77,7 @@ public class toDoItem {
 		info+="Priority: "+this.getPriority()+"\n";
 		info+="Job Description: "+this.getjobDesc()+"\n";
 		info+="Due Date: "+this.getDueDate()+"\n";
+		info+="Task Name: "+this.getDesc()+"\n";
 		info+="Status: "+this.getStatus()+"\n";
 		return info;
 	}

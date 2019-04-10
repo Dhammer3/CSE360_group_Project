@@ -29,7 +29,7 @@ public class Message extends JFrame {
 	String taskName="";
 	String dueDate="";
 	String description="";
-	int priority=100;//need to do error handling for this
+	String priorityText="";//need to do error handling for this
 	//String
 	//int jButtonY
 	Message(){
@@ -45,9 +45,10 @@ public class Message extends JFrame {
 		toDoItemName.setBounds(xTextFieldSpacing, ySpacing, 130, 30);
 		//toDoItemName.setText("here");
 		
-		JTextField todoLists=new JTextField();
+		JTextArea todoLists=new JTextArea();
 		todoLists.setBounds(400, 10, 400, 400);
-		
+	
+	
 
 		
 		//drop down for date
@@ -141,6 +142,10 @@ public class Message extends JFrame {
 				taskName=toDoItemName.getText();
 				dueDate=dueDateTextField.getText();
 				description=descriptionTextBox.getText();
+				priorityText=priorityTextBox.getText();
+				
+				List.addItem(Integer.valueOf(priorityText), description, dueDate, taskName);
+				
 				if(updated)
 				{
 					
@@ -212,7 +217,15 @@ public class Message extends JFrame {
 			public void actionPerformed(ActionEvent printButton) 
 			{
 				
-				todoLists.setText("hello");
+				toDoItem sorted=List.head;
+				String item="";
+				while(sorted.next!=null)
+				{
+					item+=sorted.printInfo();
+					sorted=sorted.next;
+					item+="\n";
+				}
+				todoLists.setText(List.head.printInfo()+"\n");
 			}
 	
 	     });

@@ -21,17 +21,18 @@ public class toDoList {
 		int numberOfItems=0;
 	}
   
-	public void deleteItem(String jobDesc)
+	public void deleteItem(int row)
 	{
             for(int i=0; i<numberOfItems; i++)
             {
-                if(list.get(i).getJobDesc()==jobDesc)
+                if(list.get(i).getPostion()==row)
                 {
                     list.remove(i);
                     numberOfItems-=1;
-                    System.out.println("removed and item.");
+      
                 }
             }
+            this.sortByPriority();
 	}
 	public void sortByStatus()
         {

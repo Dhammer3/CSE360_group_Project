@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class toDoList {
 	{
             for(int i=0; i<numberOfItems; i++)
             {
-                if(list.get(i).getjobDesc()==jobDesc)
+                if(list.get(i).getJobDesc()==jobDesc)
                 {
                     list.remove(i);
                     numberOfItems-=1;
@@ -32,18 +33,25 @@ public class toDoList {
                 }
             }
 	}
-	
+	public void sortByStatus()
+        {
+            list.sort(Comparator.comparing(toDoItem::getStatusNum));
+        }
 	public void sortByDueDate()
 	{
-              
+              list.sort(Comparator.comparing(toDoItem::getDueDate));
 	}
 	public void sortByTaskName()
 	{
-            
+            list.sort(Comparator.comparing(toDoItem::getTaskName));
+	}
+        public void sortByJobDesc()
+	{
+            list.sort(Comparator.comparing(toDoItem::getJobDesc));
 	}
 	public void sortByPriority()
 	{
-		
+            list.sort(Comparator.comparing(toDoItem::getPriority));
 	}
 	
 	public boolean addItem(int priority, String jobDesc, String dueDate, String desc)
@@ -54,7 +62,7 @@ public class toDoList {
 
 		for(int i=0; i<numberOfItems; i++)
                 {
-                    if((list.get(i).getDesc()==desc)||(list.get(i).getPriority()==priority))
+                    if((list.get(i).getJobDesc()==desc)||(list.get(i).getPriority()==priority))
                     {
                         return false;
                     }
@@ -166,16 +174,15 @@ public class toDoList {
 	{
             Scanner scan = new Scanner(System.in);
 		toDoList l= new toDoList();
-                l.addItem(99, "desc", "dd", "job name");
-                l.getListofItems();
-		l.printList();
-                System.out.println("Input save file name");
-                String FN =scan.next();
-                l.saveList(FN);
-                l.loadList(FN);
+                l.addItem(99, "desc", "dd", "b");
+                l.addItem(1, "a", "dd", "e");
+                l.addItem(2, "b", "dd", "d");
+                l.addItem(-1, "c", "dd", "a");//having trouble adding this item to the list.
                 l.printList();
-                l.deleteItem("desc");
+      
+        
                 l.printList();
+
 	}
 
 }

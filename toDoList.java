@@ -122,7 +122,7 @@ public class toDoList {
 //               if(list.get(i).)
 //           }
 	}
-	public void saveList(String fileName)
+	public boolean saveList(String fileName)
 	{
             String s="";
 		try{
@@ -154,12 +154,14 @@ public class toDoList {
                         }
                         while(counter!=numberOfItems);
 			w.close();
+                        
 		}
 		//create new file and write to it here
 		catch(IOException e)
 		{
-			System.out.println("There was a problem writing to the file");
+			return false;
 		}
+                return true;
 	}
 
 	public boolean loadList(String fileName)
@@ -187,6 +189,10 @@ public class toDoList {
                           return false;
                          }
                              return true;
+        }
+        public void deleteALL()
+        {
+                list.clear();
         }
 
         public void printList()

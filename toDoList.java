@@ -62,7 +62,8 @@ public class toDoList {
 
 		for(int i=0; i<numberOfItems; i++)
                 {
-                    if((list.get(i).getJobDesc()==desc)||(list.get(i).getPriority()==priority))
+                    
+                    if(((list.get(i).getJobDesc().compareTo(desc))==0)||(list.get(i).getPriority()==priority))
                     {
                         return false;
                     }

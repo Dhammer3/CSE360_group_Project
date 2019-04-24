@@ -1,4 +1,12 @@
-package group_project;
+package javafxapplication1.newpackage;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.Scanner;
 
 
 
@@ -69,51 +77,23 @@ public class toDoList {
 				n.next=nextItem;
 				n.next.next=null;
 				this.numberOfItems+=1;
-				this.sort(this.head);
+				
 				return true;
 			}
 		}
 		return false;
 	}
-	public void insertionSort(toDoItem head)
-	{
-		toDoItem sorted=null;
-		toDoItem current=head;
-		while(current!=null)
-		{
-			toDoItem next = current.next;
-			sort(current);
-			current=next;
-		}
-		head=sorted;
-	}
-	public void sort(toDoItem newItem)
-	{
-		if(sorted==null||sorted.priority>=newItem.priority)
-		{
-			newItem.next=sorted;
-			sorted=newItem;
-		}
-		else
-		{
-			toDoItem current=sorted;
-			while(current.next!=null && current.next.priority<=newItem.priority)
-			{
-				current=current.next;
-			}
-			newItem.next=current.next;
-			current.next=newItem;
-		}
-	}
-
-	public void getListofItems()
+	
+	public String getListofItems()
 	{
 		String listStr="";
 		toDoItem sorted=this.head;
-		while(sorted.next!=null)
+		while(sorted!=null)
 		{
-				listStr+=sorted.getInfo();
-				listStr+="\n";
+                    listStr+="\n";
+				listStr+=sorted.printInfo();
+				
+                                sorted=sorted.next;
 		}
 	return listStr;
 	}
@@ -123,7 +103,8 @@ public class toDoList {
 	*/
 	public void changeItem(toDoItem newItem, String changeParam)
 	{
-		String searchBy=""
+            /*
+		String searchBy="";
 		switch(changeParam)
 		{
 			case "D":
@@ -141,15 +122,16 @@ public class toDoList {
 			
 			case default:
 				
-		}
+		}*/
 	}
 	public void saveList(String fileName)
 	{
 		try{
 			
 		final String dir = System.getProperty("user.dir");
-		String saveStr=this.getListofItems();
+                System.out.println(dir+"\\"+fileName+".txt");
 		 File FN = new File(dir+"/"+fileName+".txt");
+                 String saveStr=this.getListofItems();
 		 FileOutputStream is = new FileOutputStream(FN);
 		OutputStreamWriter osw = new OutputStreamWriter(is);    
 			Writer w = new BufferedWriter(osw);
@@ -164,21 +146,31 @@ public class toDoList {
 	}
 	public void loadList(String fileName)
 	{
-			final String dir = System.getProperty("user.dir");
-			 File FN = new File(dir+"/"+fileName+".txt");
-			 
-			
-	}
+  
+                final String dir = System.getProperty("user.dir");
+			 File FN = new File(dir+"\\"+fileName+".txt");
+           
+            }
+        public void printList()
+        {
+            String l= this.getListofItems();
+            System.out.println(l);
+        }
 	public static void main (String [] args)
 	{
+            Scanner scan = new Scanner(System.in);
 		toDoList l= new toDoList();
 		l.addItem(1, "a", "b", "c" );
-		l.printList();
+                l.getListofItems();
+                l.printList();
 		l.addItem(2, "g", "h", "k" );
 		l.addItem(3, "e", "h", "j" );
 		l.addItem(-11, "m", "bn", "c" );
-
+                l.getListofItems();
 		l.printList();
+                System.out.println("Input save file name");
+                String FN =scan.next();
+                l.saveList(FN);
 	}
 
 }

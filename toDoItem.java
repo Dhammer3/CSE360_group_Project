@@ -1,11 +1,13 @@
-package group_project;
+package javafxapplication1.newpackage;
+
+
 
 public class toDoItem {
 
 	int priority;
 	String jobDesc;
 	String dueDate;
-	String tN;
+	String taskName;
 	String status;
 	String[] statusList= {"not started", "in progress","finished"};
 	toDoItem next;
@@ -15,17 +17,17 @@ public class toDoItem {
 		this.priority=0;
 		this.jobDesc=null;
 		this.dueDate=null;
-		this.tN=null;
+		this.taskName=null;
 		this.status=null;
 		this.next=null;
 		this.prev=null;
 	}
-	public toDoItem(int priority, String jobDesc, String dueDate, String tN)
+	public toDoItem(int priority, String jobDesc, String dueDate, String taskName)
 	{
 		this.priority=priority;
 		this.jobDesc=jobDesc;
 		this.dueDate=dueDate;
-		this.tN=tN;
+		this.taskName=taskName;
 		this.status=this.statusList[0];
 		this.next=null;
 		this.prev=null;
@@ -44,7 +46,7 @@ public class toDoItem {
 	}
 	public void setDesc(String desc)
 	{
-		this.desc=desc;
+		this.taskName=desc;
 	}
 	public void setStatus(int stat)
 	{
@@ -68,7 +70,7 @@ public class toDoItem {
 	}
 	public String getDesc()
 	{
-		return this.tN;
+		return this.taskName;
 	}
 
 	public String printInfo()

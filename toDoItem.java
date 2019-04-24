@@ -1,4 +1,4 @@
-package javafxapplication1.newpackage;
+package javafxapplication1;
 
 
 

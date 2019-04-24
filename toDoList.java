@@ -152,6 +152,7 @@ public class toDoList {
                   }
                   
               }
+              this.sortByStatus();
           }
 	}
 	public boolean saveList(String fileName)

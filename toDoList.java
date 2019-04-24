@@ -1,4 +1,5 @@
-package javafxapplication1;
+package javafxapplication1.newpackage;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;

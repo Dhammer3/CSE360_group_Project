@@ -36,22 +36,42 @@ public class toDoList {
 	public void sortByStatus()
         {
             list.sort(Comparator.comparing(toDoItem::getStatusNum));
+            for(int i=0; i<numberOfItems; i++)
+            {
+                list.get(i).setPosition(i);
+            }
         }
 	public void sortByDueDate()
 	{
               list.sort(Comparator.comparing(toDoItem::getDueDate));
+              for(int i=0; i<numberOfItems; i++)
+            {
+                list.get(i).setPosition(i);
+            }
 	}
 	public void sortByTaskName()
 	{
             list.sort(Comparator.comparing(toDoItem::getTaskName));
+            for(int i=0; i<numberOfItems; i++)
+            {
+                list.get(i).setPosition(i);
+            }
 	}
         public void sortByJobDesc()
 	{
             list.sort(Comparator.comparing(toDoItem::getJobDesc));
+            for(int i=0; i<numberOfItems; i++)
+            {
+                list.get(i).setPosition(i);
+            }
 	}
 	public void sortByPriority()
 	{
             list.sort(Comparator.comparing(toDoItem::getPriority));
+            for(int i=0; i<numberOfItems; i++)
+            {
+                list.get(i).setPosition(i);
+            }
 	}
 	
 	public boolean addItem(int priority, String jobDesc, String dueDate, String desc)
@@ -70,6 +90,7 @@ public class toDoList {
                 }
                 this.numberOfItems+=1;
                 list.add(nextItem);
+                this.sortByPriority();
                 return true;
 	}
 

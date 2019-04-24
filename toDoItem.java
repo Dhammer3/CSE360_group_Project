@@ -13,6 +13,7 @@ public class toDoItem {
 	String[] statusList= {"not started", "in progress","finished"};
 	toDoItem next;
 	toDoItem prev;
+        int position;
 	public toDoItem()
 	{
 		this.priority=0;
@@ -58,11 +59,15 @@ public class toDoItem {
 	{
 		return this.status;
 	}
+        public int getStatusNum()
+        {
+            return this.statusNum;
+        }
 	public int getPriority()
 	{
 		return this.priority;
 	}
-	public String getjobDesc()
+	public String getJobDesc()
 	{
 		return this.jobDesc;
 	}
@@ -70,25 +75,30 @@ public class toDoItem {
 	{
 		return this.dueDate;
 	}
-	public String getDesc()
+	public String getTaskName()
 	{
 		return this.taskName;
 	}
         public String getStatusVal()
 	{
-         
-           
-                return Integer.toString(statusNum);
-	
+          return Integer.toString(statusNum);
 	}
+        public void setPosition(int x)
+        {
+            this.position=x;
+        }
+        public int getPostion()
+        {
+            return this.position;
+        }
 
 	public String printInfo()
 	{
 		String info="";
 		info+=" Priority: "+this.getPriority()+"\n";
-		info+=" Job Description: "+this.getjobDesc()+"\n";
+		info+=" Job Description: "+this.getJobDesc()+"\n";
 		info+=" Due Date: "+this.getDueDate()+"\n";
-		info+=" Task Name: "+this.getDesc()+"\n";
+		info+=" Task Name: "+this.getTaskName()+"\n";
 		info+=" Status: "+this.getStatus()+"\n";
 		return info;
 	}
@@ -96,9 +106,9 @@ public class toDoItem {
 	{
             String info="";
 		info+=this.getPriority()+"\n";
-		info+=this.getjobDesc()+"\n";
+		info+=this.getJobDesc()+"\n";
 		info+=this.getDueDate()+"\n";
-		info+=this.getDesc()+"\n";
+		info+=this.getTaskName()+"\n";
 		info+=this.getStatusVal()+"\n";
 		return info;
         }

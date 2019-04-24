@@ -15,7 +15,7 @@ public class toDoList {
 		//this.next=null;
 		head=null;
 		sorted=null;
-	
+
 	}
 	public void deleteItem(String jobDesc)
 	{
@@ -27,6 +27,7 @@ public class toDoList {
 			n=n.next;
 			counter++;
 		}
+		
 	}
 	public boolean addItem(int priority, String jobDesc, String dueDate, String desc)
 	{
@@ -47,13 +48,13 @@ public class toDoList {
 				if(n.getjobDesc()==jobDesc)
 				{
 					alreadyInList=true;
-	
+
 				}
 				if(n.getPriority()==priority)
 				{
 					conflictingPriority=true;
 				}
-					n=n.next;	
+					n=n.next;
 			}
 			if(n.getjobDesc()==jobDesc)
 			{
@@ -71,18 +72,13 @@ public class toDoList {
 				this.sort(this.head);
 				return true;
 			}
-			
-				
-			
 		}
 		return false;
-		
 	}
 	public void insertionSort(toDoItem head)
 	{
 		toDoItem sorted=null;
 		toDoItem current=head;
-		
 		while(current!=null)
 		{
 			toDoItem next = current.next;
@@ -107,26 +103,71 @@ public class toDoList {
 			}
 			newItem.next=current.next;
 			current.next=newItem;
-			
 		}
 	}
-	public void changeItem(toDoItem newItem, String changeParam)
+
+	public void getListofItems()
 	{
-		
-	}
-	public void printList()
-	{
+		String listStr="";
 		toDoItem sorted=this.head;
 		while(sorted.next!=null)
 		{
-			System.out.println(sorted.printInfo());
-			sorted=sorted.next;
+				listStr+=sorted.getInfo();
+				listStr+="\n";
 		}
-		System.out.println(sorted.printInfo());
+	return listStr;
 	}
-	public void saveList()
+	/*
+	@param: changeParam: contains inforomation on which parameter to 
+	change the item by. 
+	*/
+	public void changeItem(toDoItem newItem, String changeParam)
 	{
-		
+		String searchBy=""
+		switch(changeParam)
+		{
+			case "D":
+			toDoItem temp = this.head();
+				while(temp!=null)
+				{
+					if(temp.getDueDate==newItem.getDueDate)
+					{
+						temp=newItem;
+					}
+					temp=temp.next;
+				}
+			case ""
+
+			
+			case default:
+				
+		}
+	}
+	public void saveList(String fileName)
+	{
+		try{
+			
+		final String dir = System.getProperty("user.dir");
+		String saveStr=this.getListofItems();
+		 File FN = new File(dir+"/"+fileName+".txt");
+		 FileOutputStream is = new FileOutputStream(FN);
+		OutputStreamWriter osw = new OutputStreamWriter(is);    
+			Writer w = new BufferedWriter(osw);
+			w.write(saveStr);
+			w.close();
+		}
+		//create new file and write to it here
+		catch(IOException e)
+		{
+			System.out.println("There was a problem writing to the file");
+		}
+	}
+	public void loadList(String fileName)
+	{
+			final String dir = System.getProperty("user.dir");
+			 File FN = new File(dir+"/"+fileName+".txt");
+			 
+			
 	}
 	public static void main (String [] args)
 	{
@@ -136,8 +177,8 @@ public class toDoList {
 		l.addItem(2, "g", "h", "k" );
 		l.addItem(3, "e", "h", "j" );
 		l.addItem(-11, "m", "bn", "c" );
-	
+
 		l.printList();
 	}
-	
+
 }

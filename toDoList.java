@@ -162,7 +162,7 @@ public class toDoList {
 		}
 	}
 
-	public void loadList(String fileName)
+	public boolean loadList(String fileName)
 	{
                 toDoList openedList=new toDoList();
                 String iter="";
@@ -181,10 +181,12 @@ public class toDoList {
                                  this.addItem(numberOfItems, taskName, dueDate, jobDesc);
                              }
                          }
+                        
                          catch(Exception e)
                          {
-                          System.out.println("unable to open list");
+                          return false;
                          }
+                             return true;
         }
 
         public void printList()

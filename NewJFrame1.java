@@ -5,10 +5,13 @@
  */
 package javafxapplication1;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +22,7 @@ import javax.swing.JOptionPane;
 public class NewJFrame1 extends javax.swing.JFrame {
 int row=0;
 toDoList to_do_list=new toDoList();
+    private JLabel jLabel0;
 
 
     /**
@@ -37,8 +41,10 @@ toDoList to_do_list=new toDoList();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-       jLabel1 = new javax.swing.JLabel();
+	 jLabel0 = new javax.swing.JLabel();
 
+
+       jLabel1 = new javax.swing.JLabel();
 	 jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -58,14 +64,25 @@ toDoList to_do_list=new toDoList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Event Name");
-	//jLabel1.addActionListener(new java.awt.event.ActionListener() {
-         //   public void actionPerformed(java.awt.event.ActionEvent evt) {
-          //      jLabel1ActionPerformed(evt);
-           // }
-       // });
 
-        jLabel2.setText("Due Date");
+ //jLabel0.setText("Event Name");
+///jLabel0.setBounds(210,-25,90,90);
+//add(jLabel0);
+//jLabel0.addMouseListener(new MouseAdapter(){ 
+//	public void mouseClicked(MouseEvent e){  
+ //      System.out.println("IT WORKS!!");
+  //  }  
+//}); 	
+
+
+
+
+
+        jLabel1.setText("Event Name");
+	
+
+	jLabel2.setText("Due Date");
+	
 
         jLabel3.setText("Description");
 
@@ -283,7 +300,9 @@ toDoList to_do_list=new toDoList();
    // }
 
    
-
+ public void mouseClicked(MouseEvent e) {
+         System.out.println("the label listener works!!");
+      }
 
 
 
@@ -298,7 +317,7 @@ toDoList to_do_list=new toDoList();
     try
             {
                int addPriority=Integer.parseInt(priority); 
-                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
     
             String strDate = dateFormat.format(date);  
             if(to_do_list.addItem(addPriority,taskName,strDate,description))
@@ -365,19 +384,21 @@ toDoList to_do_list=new toDoList();
                 jTable1.setValueAt(blank, row, 1);      // this sets what is at the selected row, and at column 1 with the blank, which is " "
 		jTable1.setValueAt(blank, row, 2);      // this sets what is at the selected row, and at column 2 with the blank, which is " "
 		jTable1.setValueAt(blank, row, 3);      // this sets what is at the selected row, and at column 3 with the blank, which is " "
-	// TODO add your handling code here:
+                jTable1.setValueAt(blank, row, 4);
+// TODO add your handling code here:
     }
 
 //change button 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     int row = jTable1.getSelectedRow();         // this detects what row is currently being selected and puts that value in to row
-		int column = jTable1.getSelectedColumn();       // this detects what column is currently being selected and puts that value in to column
+    int column = jTable1.getSelectedColumn();       // this detects what column is currently being selected and puts that value in to column
 		String change = String.valueOf(jTable1.getValueAt(row, column)); // this stores the specific thing that is at the row and column what was selected
-
-    String addName = jTextField1.getText();  // what ever is in the Event name textfield box is put into variable addName
+                
+                System.out.println(change);
+                
+   /* String addName = jTextField1.getText();  // what ever is in the Event name textfield box is put into variable addName
     Date addDate = jDateChooser1.getDate();     // what ever is in the Due Date textfield box is put into variable addDate
-		String addDescription = jTextField2.getText();  // what ever is in the Description textfield box is put into variable addDescription
-		String addPriority = jTextField3.getText();     // what ever is in the Priority textfield box is put into variable addPriority
+		String addDescription = jTextField2.getText();  // what ever is in the Description textfield box is put into variable addDescription		String addPriority = jTextField3.getText();     // what ever is in the Priority textfield box is put into variable addPriority
 
                 if (column ==0){
                 jTable1.setValueAt(addName, row,column);
@@ -395,7 +416,7 @@ toDoList to_do_list=new toDoList();
 		jTable1.setValueAt(addDescription, row,column);
                  }
 
-
+*/
 
 
         // TODO add your handling code here:

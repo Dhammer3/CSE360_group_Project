@@ -1,4 +1,4 @@
-package javafxapplication1;
+package javafxapplication1.newpackage;
 
 
 
@@ -33,6 +33,10 @@ public class toDoItem {
 		this.status=this.statusList[0];
 		this.next=null;
 		this.prev=null;
+	}
+        public void setTaskName(String taskName)
+	{
+		this.taskName=taskName;
 	}
 	public void setPriority(int priority)
 	{

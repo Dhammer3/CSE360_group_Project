@@ -124,6 +124,10 @@ public class toDoList {
 	}
 	public boolean saveList(String fileName)
 	{
+            if(fileName=="")
+            {
+                return false;
+            }
             String s="";
 		try{
 

@@ -38,6 +38,10 @@ public class toDoItem {
 	{
 		this.taskName=taskName;
 	}
+         public void setDueDate(String dueDate)
+	{
+		this.dueDate=dueDate;
+	}
 	public void setPriority(int priority)
 	{
 		this.priority=priority;

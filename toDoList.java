@@ -116,41 +116,17 @@ public class toDoList {
 	@param: changeParam: contains inforomation on which parameter to
 	change the item by.
 	*/
-	public void changeItem(String newInfo,  int row, int columnToChange)
+	public void changeItem(String taskName, String dueDate, String desc, int priority, int Status)
 	{
            for(int i=0; i<numberOfItems; i++)
            {
-              if(list.get(i).getPostion()==row)
+              if(list.get(i).getTaskName()==taskName)
               {
-                  //change the taskname
-                  if(columnToChange==0)
-                  {
-                      list.get(i).setTaskName(newInfo);
-                  }
-                    //change the dueDate
-                  if(columnToChange==1)
-                  {
-                      list.get(i).setTaskName(newInfo);
-                  }
-                    //change the priority
-                  if(columnToChange==2)
-                  {
-                      int priority=Integer.valueOf(newInfo);
-                  
-                      list.get(i).setPriority(priority);
-                  }
-                    //change the description
-                  if(columnToChange==3)
-                  {
-                      list.get(i).setDesc(newInfo);
-                  }
-                    //change the status
-                  if(columnToChange==4)
-                  {
-                      int status=Integer.valueOf(newInfo);
-                      list.get(i).setStatus(status);
-                  }
-                  
+                list.get(i).setDueDate(dueDate);
+                list.get(i).setDesc(dueDate);
+                list.get(i).setPosition(priority);
+                list.get(i).setStatus(Status);
+             
               }
               this.sortByStatus();
           }

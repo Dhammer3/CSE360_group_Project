@@ -112,14 +112,14 @@ jLabel0.addMouseListener(new MouseAdapter(){
             }
         });
 
-        jButton4.setText("Display (show not completed)");
+        jButton4.setText("Display");
 	jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Print Report (show completed)");
+        jButton5.setText("Print Report");
 	jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -207,7 +207,7 @@ jLabel0.addMouseListener(new MouseAdapter(){
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-
+	jTable1.setDefaultEditor(Object.class, null);
         jButton7.setText("Restore");
 	jButton7.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {

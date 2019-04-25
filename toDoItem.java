@@ -1,12 +1,13 @@
 package javafxapplication1;
 
-
+import java.text.DateFormat;
 
 public class toDoItem {
 
 	int priority;
 	String jobDesc;
 	String dueDate;
+	DateFormat date;
 	String taskName;
 	String status;
         int statusNum;
@@ -23,6 +24,7 @@ public class toDoItem {
 		this.status=null;
 		this.next=null;
 		this.prev=null;
+		this.date = null;
 	}
 	public toDoItem(int priority, String jobDesc, String dueDate, String taskName)
 	{
@@ -49,6 +51,10 @@ public class toDoItem {
 	public void jobDesc(String jobDesc)
 	{
 		this.jobDesc=jobDesc;
+	}
+	public void setDateChooser(DateFormat dueDate)
+	{
+		this.date = dueDate;
 	}
 	public void dueDate(String dueDate)
 	{

@@ -5,6 +5,8 @@
  */
 package javafxapplication1;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
@@ -13,6 +15,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -65,15 +68,15 @@ toDoList to_do_list=new toDoList();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 
- //jLabel0.setText("Event Name");
-///jLabel0.setBounds(210,-25,90,90);
-//add(jLabel0);
-//jLabel0.addMouseListener(new MouseAdapter(){ 
-//	public void mouseClicked(MouseEvent e){  
- //      System.out.println("IT WORKS!!");
-  //  }  
-//}); 	
-
+/*jLabel0.setText("Event Name");
+jLabel0.setBounds(290,-26,90,90);
+add(jLabel0);
+jLabel0.addMouseListener(new MouseAdapter(){ 
+	public void mouseClicked(MouseEvent e){  
+       System.out.println("IT WORKS!!");
+    }  
+}); 	
+*/
 
 
 
@@ -378,13 +381,17 @@ toDoList to_do_list=new toDoList();
 	  int row = jTable1.getSelectedRow();         // this detects what row is currently being selected and puts that value in to row
 		//int column = jTable1.getSelectedColumn();       // this detects what column is currently being selected and puts that value in to column
                to_do_list.deleteItem(row);
-              this.setcorrectPosition();
-                
-		jTable1.setValueAt(blank, row, 0);      // this sets what is at the selected row, and at column 0 with the blank, which is " "
-                jTable1.setValueAt(blank, row, 1);      // this sets what is at the selected row, and at column 1 with the blank, which is " "
-		jTable1.setValueAt(blank, row, 2);      // this sets what is at the selected row, and at column 2 with the blank, which is " "
-		jTable1.setValueAt(blank, row, 3);      // this sets what is at the selected row, and at column 3 with the blank, which is " "
-                jTable1.setValueAt(blank, row, 4);
+             
+                for(int i=0; i<to_do_list.numberOfItems+1; i++)
+                {
+		jTable1.setValueAt(blank, i, 0);      // this sets what is at the selected row, and at column 0 with the blank, which is " "
+                jTable1.setValueAt(blank, i, 1);      // this sets what is at the selected row, and at column 1 with the blank, which is " "
+		jTable1.setValueAt(blank, i, 2);      // this sets what is at the selected row, and at column 2 with the blank, which is " "
+		jTable1.setValueAt(blank, i, 3);      // this sets what is at the selected row, and at column 3 with the blank, which is " "
+                jTable1.setValueAt(blank, i, 4);
+                 this.setcorrectPosition();
+                }
+                 this.setcorrectPosition();
 // TODO add your handling code here:
     }
 
@@ -392,9 +399,82 @@ toDoList to_do_list=new toDoList();
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     int row = jTable1.getSelectedRow();         // this detects what row is currently being selected and puts that value in to row
     int column = jTable1.getSelectedColumn();       // this detects what column is currently being selected and puts that value in to column
-		String change = String.valueOf(jTable1.getValueAt(row, column)); // this stores the specific thing that is at the row and column what was selected
-                
+		
+      /*          try
+                {
+                     String change = String.valueOf(jTable1.getValueAt(row, column)); // this stores the specific thing that is at the row and column what was selected
+               to_do_list.changeItem(change, row, column);
                 System.out.println(change);
+                this.setcorrectPosition();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error updating");
+                }
+               
+   */
+                
+              //JPanel p = new JPanel(new BorderLayout(5,5));
+
+       JPanel panel = new JPanel(new BorderLayout(5, 5));
+
+    JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
+    label.add(new JLabel("Event Name", SwingConstants.RIGHT));
+    label.add(new JLabel("Due Date", SwingConstants.RIGHT));
+     label.add(new JLabel("Description", SwingConstants.RIGHT));
+      label.add(new JLabel("Priority", SwingConstants.RIGHT));
+       label.add(new JLabel("Status", SwingConstants.RIGHT));
+    
+    panel.add(label, BorderLayout.WEST);
+
+    JPanel controls = new JPanel(new GridLayout(0, 1, 2, 2));
+    
+    JTextField eventName = new JTextField();
+    controls.add(eventName);
+
+    
+     JTextField dueDate = new  JTextField ();
+    controls.add(dueDate);
+   
+    
+     JTextField description = new  JTextField ();
+    controls.add(description);
+ 
+    
+     JTextField  priority = new  JTextField ();
+    controls.add(priority);
+    
+    //int p=0;
+  // p=Integer.parseInt(des);
+    
+     JTextField  status = new  JTextField ();
+     //status.setText("Enter 0 for not started, 1 for started, 2 for compeleted");
+    controls.add(status);
+     
+    //int s=Integer.valueOf(stat);
+//    
+//     System.out.println(name);
+//     System.out.println(date);
+//     System.out.println(des);
+//     System.out.println(prior);
+//       System.out.println(stat);
+
+
+     
+    panel.add(controls, BorderLayout.CENTER);
+
+    JOptionPane.showMessageDialog(null, panel, "Change", JOptionPane.INFORMATION_MESSAGE);
+       String name = eventName.getText();
+        String date = dueDate.getText();
+            String des = description.getText();
+             String prior = priority.getText();
+             String stat = status.getText(); 
+               to_do_list.changeItem(name, date, des, prior, stat);
+    System.out.println("-0--------------");
+      
+   this.setcorrectPosition();
+                
+                
                 
    /* String addName = jTextField1.getText();  // what ever is in the Event name textfield box is put into variable addName
     Date addDate = jDateChooser1.getDate();     // what ever is in the Due Date textfield box is put into variable addDate

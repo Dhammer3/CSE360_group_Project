@@ -1,4 +1,4 @@
-package javafxapplication1.newpackage;
+package javafxapplication1;
 
 
 
@@ -27,9 +27,9 @@ public class toDoItem {
 	public toDoItem(int priority, String jobDesc, String dueDate, String taskName)
 	{
 		this.priority=priority;
-		this.jobDesc=jobDesc;
+		this.taskName=jobDesc;
 		this.dueDate=dueDate;
-		this.taskName=taskName;
+		this.jobDesc=taskName;
 		this.status=this.statusList[0];
 		this.next=null;
 		this.prev=null;

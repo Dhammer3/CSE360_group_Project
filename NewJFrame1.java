@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui360;
+package javafxapplication1;
+
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

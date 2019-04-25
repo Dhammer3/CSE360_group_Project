@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxapplication1;
+package javafxapplication1.newpackage;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -25,7 +25,7 @@ import javax.swing.*;
 public class NewJFrame1 extends javax.swing.JFrame {
 int row=0;
 toDoList to_do_list=new toDoList();
-    private JLabel jLabel0;
+   // private JButton jLabel0;
 
 
     /**
@@ -44,7 +44,7 @@ toDoList to_do_list=new toDoList();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-	 jLabel0 = new javax.swing.JLabel();
+	 //jLabel0 = new javax.swing.JButton();
 
 
        jLabel1 = new javax.swing.JLabel();
@@ -67,16 +67,17 @@ toDoList to_do_list=new toDoList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+//
+//jLabel0.setText("Start Over");
+//jLabel0.setBounds(290,-26,90,90);
+//add(jLabel0);
+//jLabel0.addActionListener(new java.awt.event.ActionListener() {
+//					public void actionPerformed(java.awt.event.ActionEvent evt) {
+//							jButton1ActionPerformed(evt);
+//							
+//					}
+//			});
 
-/*jLabel0.setText("Event Name");
-jLabel0.setBounds(290,-26,90,90);
-add(jLabel0);
-jLabel0.addMouseListener(new MouseAdapter(){ 
-	public void mouseClicked(MouseEvent e){  
-       System.out.println("IT WORKS!!");
-    }  
-}); 	
-*/
 
 
 
@@ -512,10 +513,33 @@ this.printRPT();
             String des = description.getText();
              String prior = priority.getText();
              String stat = status.getText(); 
-               to_do_list.changeItem(name, date, des, prior, stat);
-    System.out.println("-0--------------");
-      
-   this.setcorrectPosition();
+						 try{
+							 
+						 Integer.valueOf(prior);
+					 }
+					 catch(Exception e)
+					{
+                                            JOptionPane.showMessageDialog(null, "Priority must be a number.", "ERROR", JOptionPane.WARNING_MESSAGE);
+						//throw pop up "priority must be a number"
+					}
+					 try{
+						 if(Integer.valueOf(stat)>2||Integer.valueOf(stat)<0)
+						 {
+                                                     JOptionPane.showMessageDialog(null, "Status must be between 0-2.", "ERROR", JOptionPane.WARNING_MESSAGE);
+							 //throw pop up "status must be between 0-2"
+						 }
+                                                  else
+                                                {
+						to_do_list.changeItem(name, date, des, prior, stat);
+                                                    }
+					 }
+					 catch(Exception e)
+					 {
+                                             JOptionPane.showMessageDialog(null, "Status must be between 0-2.", "ERROR", JOptionPane.WARNING_MESSAGE);
+						 //throw pop up "status must be between 0-2"
+					 }
+					
+                                        this.setcorrectPosition();
    
                 
                 

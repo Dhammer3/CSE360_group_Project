@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxapplication1;
+package gui360;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -15,6 +15,9 @@ import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 
 /**
@@ -61,6 +64,7 @@ toDoList to_do_list=new toDoList();
         jTextField3 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
@@ -207,7 +211,7 @@ jLabel0.addMouseListener(new MouseAdapter(){
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-	jTable1.setDefaultEditor(Object.class, null);
+        jTable1.setDefaultEditor(Object.class, null);
         jButton7.setText("Restore");
 	jButton7.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -475,9 +479,10 @@ this.printRPT();
     JTextField eventName = new JTextField();
     controls.add(eventName);
 
-    
+  
      JTextField dueDate = new  JTextField ();
-    controls.add(dueDate);
+     JDateChooser jDateChooser2 = new JDateChooser();
+    controls.add(jDateChooser2);
    
     
      JTextField description = new  JTextField ();
@@ -508,7 +513,9 @@ this.printRPT();
 
     JOptionPane.showMessageDialog(null, panel, "Change", JOptionPane.INFORMATION_MESSAGE);
        String name = eventName.getText();
-        String date = dueDate.getText();
+       Date changeDate = jDateChooser2.getDate();
+        DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd");
+        String date = date1.format(changeDate);
             String des = description.getText();
              String prior = priority.getText();
              String stat = status.getText(); 
@@ -644,6 +651,7 @@ this.printRPT();
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

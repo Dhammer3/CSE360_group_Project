@@ -112,17 +112,17 @@ jLabel0.addMouseListener(new MouseAdapter(){
             }
         });
 
-        jButton4.setText("Display");
+        jButton4.setText("Display (show not completed)");
 	jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-              //  jButton4ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Print Report");
+        jButton5.setText("Print Report (show completed)");
 	jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-             //   jButton5ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -341,14 +341,48 @@ jLabel0.addMouseListener(new MouseAdapter(){
     }
      private void setcorrectPosition()
     {
+        String blank=null;
+         for(int i=0; i<to_do_list.numberOfItems+1; i++)
+                {
+		jTable1.setValueAt(blank, i, 0);      // this sets what is at the selected row, and at column 0 with the blank, which is " "
+                jTable1.setValueAt(blank, i, 1);      // this sets what is at the selected row, and at column 1 with the blank, which is " "
+		jTable1.setValueAt(blank, i, 2);      // this sets what is at the selected row, and at column 2 with the blank, which is " "
+		jTable1.setValueAt(blank, i, 3);      // this sets what is at the selected row, and at column 3 with the blank, which is " "
+                jTable1.setValueAt(blank, i, 4);
+              
+                }
         for(int i=0; i<to_do_list.numberOfItems;i++)
         {
-            to_do_list.list.get((i)).getPostion();
+            
+                 to_do_list.list.get((i)).getDisplayPosition();
+       
+            jTable1.setValueAt(to_do_list.list.get((i)).getTaskName(),to_do_list.list.get((i)).getDisplayPosition(), 0);
+             jTable1.setValueAt(to_do_list.list.get((i)).getDueDate(),to_do_list.list.get((i)).getDisplayPosition(), 1);
+              jTable1.setValueAt(to_do_list.list.get((i)).getPriority(),to_do_list.list.get((i)).getDisplayPosition(), 2);
+               jTable1.setValueAt(to_do_list.list.get((i)).getJobDesc(),to_do_list.list.get((i)).getDisplayPosition(), 3);
+               jTable1.setValueAt(to_do_list.list.get((i)).getStatus(),to_do_list.list.get((i)).getDisplayPosition(), 4);
+            
+          
+        }
+            /*
+    jTable1.setValueAt(taskName, row,0);             //the name is being placed at row 0, column 0
+    jTable1.setValueAt(strDate, row,1);             //the date is being placed at row 0, column 1
+    jTable1.setValueAt(priority, row,2);         //the prority is being placed at row 0, column 2
+    jTable1.setValueAt(description, row,3);      //the description is being placed at row 0, column 3
+            */
+    }
+      private void printRPT()
+    {
+        for(int i=0; i<to_do_list.numberOfItems;i++)
+        {
+            
+         
             jTable1.setValueAt(to_do_list.list.get((i)).getTaskName(),to_do_list.list.get((i)).getPostion(), 0);
              jTable1.setValueAt(to_do_list.list.get((i)).getDueDate(),to_do_list.list.get((i)).getPostion(), 1);
               jTable1.setValueAt(to_do_list.list.get((i)).getPriority(),to_do_list.list.get((i)).getPostion(), 2);
                jTable1.setValueAt(to_do_list.list.get((i)).getJobDesc(),to_do_list.list.get((i)).getPostion(), 3);
                jTable1.setValueAt(to_do_list.list.get((i)).getStatus(),to_do_list.list.get((i)).getPostion(), 4);
+            
                
         }
             /*
@@ -368,8 +402,17 @@ jLabel0.addMouseListener(new MouseAdapter(){
 
 	// TODO add your handling code here:
     
+private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        this.setcorrectPosition();
+
+}
 
 
+
+private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+this.printRPT();
+}
 
 
 
@@ -473,6 +516,7 @@ jLabel0.addMouseListener(new MouseAdapter(){
     System.out.println("-0--------------");
       
    this.setcorrectPosition();
+   
                 
                 
                 

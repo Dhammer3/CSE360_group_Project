@@ -96,9 +96,19 @@ public class toDoItem {
             this.position=x;
         }
         public int getPostion()
-        {
+        {   
             return this.position;
         }
+         public int getDisplayPosition()//hide it hehe
+        {   if(this.statusNum==2)
+            {
+             return this.position+30;
+                }
+        else
+        {
+           return this.position;
+        }
+         }
 
 	public String printInfo()
 	{

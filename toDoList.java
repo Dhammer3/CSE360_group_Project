@@ -1,4 +1,4 @@
-package javafxapplication1;
+package javafxapplication1.newpackage;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -52,11 +52,30 @@ public class toDoList {
 	}
 	public void sortByTaskName()
 	{
-            list.sort(Comparator.comparing(toDoItem::getTaskName));
-            for(int i=0; i<numberOfItems; i++)
+            toDoItem temp= new toDoItem();
+            toDoItem temp2= new toDoItem();
+       for (int i = 0; i < numberOfItems; i++) 
+        {
+            for (int j = i + 1; j < numberOfItems; j++) 
+            {
+                if (list.get(i).compareTo(list.get(j))>0) 
+                {
+                   temp = list.get(i);
+                   temp2=list.get(j);
+                    list.remove(i);
+                    list.remove(j);
+                    list.add(i, temp2);
+                    list.add(j, temp);
+              
+                 
+                }
+            }
+        }
+          for(int i=0; i<numberOfItems; i++)
             {
                 list.get(i).setPosition(i);
             }
+      
 	}
         public void sortByJobDesc()
 	{
@@ -208,8 +227,9 @@ public class toDoList {
                                  String dueDate=opener.next();
                                  String jobDesc=opener.next();
                                  String priority=opener.next();
+                                int p=Integer.parseInt(priority);
                                  String status=opener.next();
-                                 this.addItem(numberOfItems, taskName, dueDate, jobDesc);
+                                 this.addItem(p, taskName, dueDate,jobDesc);
                              }
                          }
                         
@@ -222,6 +242,7 @@ public class toDoList {
         public void deleteALL()
         {
                 list.clear();
+              //. this.numberOfItems=0;
         }
 
         public void printList()

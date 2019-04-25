@@ -26,6 +26,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
 int row=0;
 toDoList to_do_list=new toDoList();
    // private JButton jLabel0;
+    private JButton jButton10;
 
 
     /**
@@ -64,7 +65,9 @@ toDoList to_do_list=new toDoList();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
-
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 //
@@ -139,6 +142,41 @@ toDoList to_do_list=new toDoList();
                 jButton6ActionPerformed(evt);
 	     }
 	});
+        
+        
+         jButton8.setText("Sort by priority");
+         jButton8.setBounds(5,480,200,30);
+         
+         add(jButton8);
+	jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                
+            }
+        });
+
+        jButton9.setText("Sort by name");
+        jButton9.setBounds(5,450,200,30);
+        add(jButton9);
+        
+	jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+               
+            }
+        });
+        
+        
+          jButton10.setText("Start over");
+        jButton10.setBounds(5,510,200,30);
+        add(jButton10);
+        
+	jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+               
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,8 +244,9 @@ toDoList to_do_list=new toDoList();
             new String [] {
                 "Event Name", "Due Date", "Priority", "Description", "Status"
             }
+                
         ));
-	jTable1.setDefaultEditor(Object.class, null);
+        jTable1.setDefaultEditor(Object.class, null);
         jScrollPane1.setViewportView(jTable1);
 
         jButton7.setText("Restore");
@@ -404,6 +443,39 @@ toDoList to_do_list=new toDoList();
 
 	// TODO add your handling code here:
     
+private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) { //priority
+to_do_list.sortByPriority();
+  this.setcorrectPosition();
+}
+
+
+
+private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {  // name
+to_do_list.sortByTaskName();
+  this.setcorrectPosition();
+}
+      
+
+private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {  // fire everything!!
+
+     
+    to_do_list.deleteALL();
+    String blank=null;
+         for(int i=0; i<to_do_list.numberOfItems+1; i++)
+                {
+		jTable1.setValueAt(blank, i, 0);      // this sets what is at the selected row, and at column 0 with the blank, which is " "
+                jTable1.setValueAt(blank, i, 1);      // this sets what is at the selected row, and at column 1 with the blank, which is " "
+		jTable1.setValueAt(blank, i, 2);      // this sets what is at the selected row, and at column 2 with the blank, which is " "
+		jTable1.setValueAt(blank, i, 3);      // this sets what is at the selected row, and at column 3 with the blank, which is " "
+                jTable1.setValueAt(blank, i, 4);
+              
+                }
+         to_do_list.numberOfItems=0;
+    
+}
+      
+      
+      
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
 
         this.setcorrectPosition();
@@ -659,6 +731,8 @@ this.printRPT();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

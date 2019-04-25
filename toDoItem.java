@@ -1,4 +1,4 @@
-package javafxapplication1;
+package javafxapplication1.newpackage;
 
 
 
@@ -130,4 +130,8 @@ public class toDoItem {
 		info+=this.getStatusVal()+"\n";
 		return info;
         }
+
+    int compareTo(toDoItem get) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

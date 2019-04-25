@@ -1,6 +1,5 @@
 package javafxapplication1;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -169,6 +168,59 @@ public class toDoList {
             }
          return false;
 	}
+	public boolean printList(String fileName)
+	{
+            if(fileName=="")
+            {
+                return false;
+            }
+            String s="";
+		try{
+
+		final String dir = System.getProperty("user.dir");
+                System.out.println(dir+"\\"+fileName+".txt");
+		 File FN = new File(dir+"\\"+fileName+".txt");
+                 String saveStr=this.getListofItems();
+
+		 FileOutputStream is = new FileOutputStream(FN);
+		OutputStreamWriter osw = new OutputStreamWriter(is);
+			BufferedWriter w = new BufferedWriter(osw);
+                        toDoItem item = new toDoItem();
+                        int counter=0;
+                        do
+                        {
+                            item=this.getEachItem(counter);
+                            w.write("Event Name: ");
+                             w.write(item.taskName);
+                            w.newLine();
+                            w.write("Due Date: ");
+                             w.write(item.dueDate);
+                            w.newLine();
+                            w.write("Description: ");
+                             w.write(item.jobDesc);
+                            w.newLine();
+                            w.write("Priority: ");
+                            w.write(Integer.toString(item.getPriority()));
+                            w.newLine();
+                            w.write("Status: ");
+                            w.write(item.getStatus());
+                            w.newLine();
+                            w.newLine();
+                           counter++;
+                        }
+                        while(counter!=numberOfItems);
+			w.close();
+                        
+		}
+		//create new file and write to it here
+		catch(IOException e)
+		{
+			return false;
+		}
+                return true;
+	}
+	
+	
 	public boolean saveList(String fileName)
 	{
             if(fileName=="")
@@ -200,6 +252,7 @@ public class toDoList {
                             w.write(Integer.toString(item.getPriority()));
                             w.newLine();
                             w.write(item.getStatusVal());
+                            w.newLine();
                             w.newLine();
                            counter++;
                         }

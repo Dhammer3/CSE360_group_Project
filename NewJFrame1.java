@@ -213,7 +213,7 @@ jLabel0.addMouseListener(new MouseAdapter(){
             }
         ));
         
-        jTable1.setAutoCreateRowSorter(true);
+       // jTable1.setAutoCreateRowSorter(true);
         jScrollPane1.setViewportView(jTable1);
         jTable1.setDefaultEditor(Object.class, null);
         jButton7.setText("Restore");

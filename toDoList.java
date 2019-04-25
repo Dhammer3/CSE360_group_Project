@@ -1,4 +1,4 @@
-package javafxapplication1.newpackage;
+package javafxapplication1;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -137,12 +137,11 @@ public class toDoList {
 	@param: changeParam: contains inforomation on which parameter to
 	change the item by.
 	*/
-	public void changeItem(String taskName, String dueDate, String desc, String priority, String Status)
+	public boolean changeItem(String taskName, String dueDate, String desc, String priority, String Status)
 	{
             try
             {
-                   System.out.println(priority);
-             System.out.println(Status);
+                
             int p=Integer.parseInt(priority);
             int s=Integer.parseInt(Status);
            for(int i=0; i<numberOfItems; i++)
@@ -151,20 +150,21 @@ public class toDoList {
               {
                   System.out.println("------------------------------------------------");
                 list.get(i).setDueDate(dueDate);
-                list.get(i).setDesc(dueDate);
-                list.get(i).setPosition(p);
+                list.get(i).jobDesc(desc);
+                list.get(i).setPriority(p);
                 list.get(i).setStatus(s);
-             
+             this.sortByStatus();
+             return true;
               }
-              this.sortByStatus();
+              
           }
             }
             catch(Exception e)
             {
                     System.out.println("000000000000000000000000000000");
-                return;
+                return false;
             }
-         
+         return false;
 	}
 	public boolean saveList(String fileName)
 	{

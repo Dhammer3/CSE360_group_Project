@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxapplication1.newpackage;
+package javafxapplication1;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -25,8 +25,7 @@ import javax.swing.*;
 public class NewJFrame1 extends javax.swing.JFrame {
 int row=0;
 toDoList to_do_list=new toDoList();
-   // private JButton jLabel0;
-    private JButton jButton10;
+    private JLabel jLabel0;
 
 
     /**
@@ -45,7 +44,7 @@ toDoList to_do_list=new toDoList();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-	 //jLabel0 = new javax.swing.JButton();
+	 jLabel0 = new javax.swing.JLabel();
 
 
        jLabel1 = new javax.swing.JLabel();
@@ -65,22 +64,19 @@ toDoList to_do_list=new toDoList();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-//
-//jLabel0.setText("Start Over");
-//jLabel0.setBounds(290,-26,90,90);
-//add(jLabel0);
-//jLabel0.addActionListener(new java.awt.event.ActionListener() {
-//					public void actionPerformed(java.awt.event.ActionEvent evt) {
-//							jButton1ActionPerformed(evt);
-//							
-//					}
-//			});
 
+/*jLabel0.setText("Event Name");
+jLabel0.setBounds(290,-26,90,90);
+add(jLabel0);
+jLabel0.addMouseListener(new MouseAdapter(){ 
+	public void mouseClicked(MouseEvent e){  
+       System.out.println("IT WORKS!!");
+    }  
+}); 	
+*/
 
 
 
@@ -142,41 +138,6 @@ toDoList to_do_list=new toDoList();
                 jButton6ActionPerformed(evt);
 	     }
 	});
-        
-        
-         jButton8.setText("Sort by priority");
-         jButton8.setBounds(5,480,200,30);
-         
-         add(jButton8);
-	jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-                
-            }
-        });
-
-        jButton9.setText("Sort by name");
-        jButton9.setBounds(5,450,200,30);
-        add(jButton9);
-        
-	jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-               
-            }
-        });
-        
-        
-          jButton10.setText("Start over");
-        jButton10.setBounds(5,510,200,30);
-        add(jButton10);
-        
-	jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-               
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -244,9 +205,7 @@ toDoList to_do_list=new toDoList();
             new String [] {
                 "Event Name", "Due Date", "Priority", "Description", "Status"
             }
-                
         ));
-        jTable1.setDefaultEditor(Object.class, null);
         jScrollPane1.setViewportView(jTable1);
 
         jButton7.setText("Restore");
@@ -443,39 +402,6 @@ toDoList to_do_list=new toDoList();
 
 	// TODO add your handling code here:
     
-private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) { //priority
-to_do_list.sortByPriority();
-  this.setcorrectPosition();
-}
-
-
-
-private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {  // name
-to_do_list.sortByTaskName();
-  this.setcorrectPosition();
-}
-      
-
-private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {  // fire everything!!
-
-     
-    to_do_list.deleteALL();
-    String blank=null;
-         for(int i=0; i<to_do_list.numberOfItems+1; i++)
-                {
-		jTable1.setValueAt(blank, i, 0);      // this sets what is at the selected row, and at column 0 with the blank, which is " "
-                jTable1.setValueAt(blank, i, 1);      // this sets what is at the selected row, and at column 1 with the blank, which is " "
-		jTable1.setValueAt(blank, i, 2);      // this sets what is at the selected row, and at column 2 with the blank, which is " "
-		jTable1.setValueAt(blank, i, 3);      // this sets what is at the selected row, and at column 3 with the blank, which is " "
-                jTable1.setValueAt(blank, i, 4);
-              
-                }
-         to_do_list.numberOfItems=0;
-    
-}
-      
-      
-      
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
 
         this.setcorrectPosition();
@@ -586,33 +512,19 @@ this.printRPT();
             String des = description.getText();
              String prior = priority.getText();
              String stat = status.getText(); 
-						 try{
-							 
-						 Integer.valueOf(prior);
-					 }
-					 catch(Exception e)
-					{
-                                            JOptionPane.showMessageDialog(null, "Priority must be a number.", "ERROR", JOptionPane.WARNING_MESSAGE);
-						//throw pop up "priority must be a number"
-					}
-					 try{
-						 if(Integer.valueOf(stat)>2||Integer.valueOf(stat)<0)
-						 {
-                                                     JOptionPane.showMessageDialog(null, "Status must be between 0-2.", "ERROR", JOptionPane.WARNING_MESSAGE);
-							 //throw pop up "status must be between 0-2"
-						 }
-                                                  else
-                                                {
-						to_do_list.changeItem(name, date, des, prior, stat);
-                                                    }
-					 }
-					 catch(Exception e)
-					 {
-                                             JOptionPane.showMessageDialog(null, "Status must be between 0-2.", "ERROR", JOptionPane.WARNING_MESSAGE);
-						 //throw pop up "status must be between 0-2"
-					 }
-					
-                                        this.setcorrectPosition();
+             if(to_do_list.changeItem(name, date, des, prior, stat))
+             {
+                    this.setcorrectPosition();
+             }
+             else
+             {
+                 JOptionPane.showMessageDialog(null, "Could not find item by that task name.", "ERROR", JOptionPane.WARNING_MESSAGE);
+                 //"could not find item by that task name"
+             }
+               
+
+      
+
    
                 
                 
@@ -731,8 +643,6 @@ this.printRPT();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

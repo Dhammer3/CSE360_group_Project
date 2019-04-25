@@ -1,4 +1,4 @@
-package javafxapplication1.newpackage;
+package javafxapplication1;
 
 
 
@@ -54,9 +54,9 @@ public class toDoItem {
 	{
 		this.dueDate=dueDate;
 	}
-	public void setDesc(String desc)
+	public void setDesc(String taskName)
 	{
-		this.taskName=desc;
+		this.taskName=taskName;
 	}
 	public void setStatus(int stat)
 	{

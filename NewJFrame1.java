@@ -611,7 +611,7 @@ this.printRPT();
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
          JFrame B7 = new JFrame();
       String load="";
-     load = JOptionPane.showInputDialog(B7, "Enter save file name:");
+     load = JOptionPane.showInputDialog(B7, "Enter file name to load:");
     
     if(!(load==""))
     {

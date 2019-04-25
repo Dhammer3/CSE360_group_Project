@@ -207,6 +207,7 @@ toDoList to_do_list=new toDoList();
                 "Event Name", "Due Date", "Priority", "Description", "Status"
             }
         ));
+	jTable1.setDefaultEditor(Object.class, null);
         jScrollPane1.setViewportView(jTable1);
 
         jButton7.setText("Restore");

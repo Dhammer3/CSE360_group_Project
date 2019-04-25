@@ -1,10 +1,13 @@
 package javafxapplication1;
 
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -149,11 +152,11 @@ public class toDoList {
               if((list.get(i).getTaskName().equals(taskName)))
               {
                   System.out.println("------------------------------------------------");
-                list.get(i).setDueDate(dueDate);
+                list.get(i).dueDate(dueDate);
                 list.get(i).jobDesc(desc);
                 list.get(i).setPriority(p);
                 list.get(i).setStatus(s);
-             this.sortByStatus();
+             this.sortByPriority();
              return true;
               }
               

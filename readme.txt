@@ -1,0 +1,1 @@
+This is a simple to-do list written in java. User can add a to do item, delete, change, save the information to a .txt file and load it. The program contains several error handling cases with pop ups. 
